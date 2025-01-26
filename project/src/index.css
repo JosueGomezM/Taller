@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+  
+  body {
+    @apply antialiased;
+  }
+}
+
+@layer components {
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20;
+  }
+  
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-xl shadow-xl;
+  }
+
+  .glass-input {
+    @apply bg-white/5 border border-white/10 rounded-lg focus:ring-2 focus:ring-blue-500/50 focus:border-transparent;
+  }
+
+  .btn-primary {
+    @apply px-4 py-2 bg-blue-600/90 hover:bg-blue-700/90 text-white rounded-lg transition-all duration-200 focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2 focus:ring-offset-dark-100;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 bg-white/5 hover:bg-white/10 text-white rounded-lg transition-all duration-200 focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-dark-100;
+  }
+
+  .nav-link {
+    @apply flex items-center px-4 py-3 rounded-xl transition-all duration-200;
+  }
+
+  .nav-link.active {
+    @apply bg-dark-100 text-white;
+  }
+
+  .nav-link:not(.active) {
+    @apply text-gray-400 hover:text-white hover:bg-dark-200;
+  }
+}
+
+/* Transiciones suaves */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Animaciones para modales */
+.modal-overlay {
+  @apply fixed inset-0 bg-black/60 backdrop-blur-sm z-50;
+  animation: fadeIn 200ms ease-out;
+}
+
+.modal-content {
+  @apply bg-dark-50 rounded-xl shadow-2xl;
+  animation: scaleUp 200ms ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { 
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
